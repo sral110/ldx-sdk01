@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ldx.local/schema/master.v0.1.json",
+  "title": "LDX Master Config v0.1",
+  "type": "object",
+  "required": [
+    "masterVersion",
+    "productFamily",
+    "applicationProfile",
+    "coreInvariants",
+    "extensionPoints",
+    "workflows",
+    "sourcePolicies",
+    "auditStatuses"
+  ],
+  "properties": {
+    "masterVersion": { "type": "string" },
+    "productFamily": {
+      "type": "object",
+      "required": ["id", "name", "offlineFirst", "aiOptional"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "offlineFirst": { "type": "boolean" },
+        "aiOptional": { "type": "boolean" }
+      }
+    },
+    "applicationProfile": {
+      "type": "object",
+      "required": ["id", "name", "domain", "principlePack", "tiers"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "domain": { "type": "string" },
+        "principlePack": { "type": "string" },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "semantic", "labelFa"],
+            "properties": {
+              "id": { "type": "string" },
+              "semantic": { "enum": ["rapid", "standard", "deep"] },
+              "labelFa": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "coreInvariants": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "extensionPoints": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "workflows": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "sourcePolicies": {
+      "type": "array",
+      "items": { "enum": ["strict-source", "source-first", "open-knowledge", "research-mode"] },
+      "uniqueItems": true
+    },
+    "aiProposalStates": {
+      "type": "array",
+      "items": { "enum": ["proposed", "accepted", "edited", "rejected"] },
+      "uniqueItems": true
+    },
+    "auditStatuses": {
+      "type": "array",
+      "items": { "enum": ["pass", "warn", "fail", "not-applicable"] },
+      "uniqueItems": true
+    },
+    "outputs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "storagePolicy": {
+      "type": "object",
+      "properties": {
+        "projectData": { "enum": ["indexeddb", "memory", "custom"] },
+        "uiPreferences": { "enum": ["localstorage", "indexeddb", "memory"] },
+        "portableExport": { "type": "boolean" },
+        "networkByDefault": { "type": "boolean" }
+      }
+    },
+    "qualityDimensions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+  },
+  "additionalProperties": true
+}
