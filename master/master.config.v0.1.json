@@ -1,0 +1,106 @@
+{
+  "$schema": "./master.schema.v0.1.json",
+  "masterVersion": "0.1.0",
+  "productFamily": {
+    "id": "ldx",
+    "name": "Learning Design Engine",
+    "offlineFirst": true,
+    "aiOptional": true
+  },
+  "applicationProfile": {
+    "id": "lesson-designer",
+    "name": "LDX Lesson Designer",
+    "domain": "lesson-design",
+    "principlePack": "ld17@1.0.0",
+    "tiers": [
+      { "id": "bronze", "semantic": "rapid", "labelFa": "برنزی / سریع" },
+      { "id": "silver", "semantic": "standard", "labelFa": "نقره‌ای / استاندارد" },
+      { "id": "gold", "semantic": "deep", "labelFa": "طلایی / عمیق" }
+    ]
+  },
+  "coreInvariants": [
+    "versioned-schema",
+    "stable-entity-ids",
+    "source-provenance",
+    "principle-contract",
+    "evidence-contract",
+    "audit-result-contract",
+    "event-envelope",
+    "revision-history",
+    "offline-baseline",
+    "explicit-ai-acceptance"
+  ],
+  "extensionPoints": [
+    "principle",
+    "rule",
+    "source-adapter",
+    "ocr-adapter",
+    "ai-provider",
+    "exporter",
+    "storage-adapter",
+    "workflow-node",
+    "integration-bridge",
+    "preset-pack",
+    "theme-package"
+  ],
+  "workflows": [
+    "create",
+    "audit",
+    "adapt",
+    "reflect-revise",
+    "source-first",
+    "quick-capture"
+  ],
+  "sourcePolicies": [
+    "strict-source",
+    "source-first",
+    "open-knowledge",
+    "research-mode"
+  ],
+  "aiProposalStates": [
+    "proposed",
+    "accepted",
+    "edited",
+    "rejected"
+  ],
+  "auditStatuses": [
+    "pass",
+    "warn",
+    "fail",
+    "not-applicable"
+  ],
+  "outputs": [
+    "full-lesson-plan",
+    "teacher-run-sheet",
+    "one-page-summary",
+    "lesson-timeline",
+    "alignment-matrix",
+    "principle-audit",
+    "evidence-map",
+    "source-map",
+    "ai-prompt-package",
+    "project-json",
+    "reflection-report",
+    "revision-diff"
+  ],
+  "storagePolicy": {
+    "projectData": "indexeddb",
+    "uiPreferences": "localstorage",
+    "portableExport": true,
+    "networkByDefault": false
+  },
+  "qualityDimensions": [
+    "pedagogical-validity",
+    "context-fit",
+    "alignment",
+    "feasibility",
+    "source-fidelity",
+    "traceability",
+    "teacher-agency",
+    "accessibility",
+    "privacy",
+    "extensibility",
+    "reliability",
+    "explainability"
+  ]
+}
